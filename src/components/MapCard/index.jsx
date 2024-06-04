@@ -1,6 +1,4 @@
-import React from "react";
 
-import { Img } from "components";
 
 const MapCard = () => {
   return (

@@ -6,6 +6,7 @@ import UserComments from "components/UserComments";
 import { useLocation } from "react-router-dom";
 import axios, { formatDate } from "../../utils/index";
 import { useEffect, useState } from "react";
+import Loading from "components/Loading";
 
 
 const SinglePostPagePage = () => {
@@ -42,40 +43,36 @@ const SinglePostPagePage = () => {
   }, []);
 
   useEffect(() => {
-   
-
     const fetchPostImage = async () => {
-
       if (data && data.image && data.image.publicID) {
         try {
-          setLoadingImage(true)
-          const response = await axios.get(`/api/admin/post/get-image/${data.image.publicID}`, { responseType: 'blob' });
+          setLoadingImage(true);
+          const response = await axios.get(
+            `/api/admin/post/get-image/${data.image.publicID}`,
+            { responseType: "blob" }
+          );
           const blob = response.data;
-          const file = new File([blob], 'image', { type: blob.type });
+          const file = new File([blob], "image", { type: blob.type });
           const fr = new FileReader();
 
-          fr.onload =  () => {
+          fr.onload = () => {
             const res = fr.result;
-              setImage(res);
-            
+            setImage(res);
           };
 
           fr.readAsDataURL(file);
         } catch (error) {
-          console.error('Erreur lors de la récupération de l\'image:', error);
-          
-        }finally{
+          console.error("Erreur lors de la récupération de l'image:", error);
+        } finally {
           setLoadingImage(false);
         }
-      } 
+      }
     };
 
     if (data && Object.keys(data).length !== 0) {
       fetchPostImage();
     }
-
-    
-  }, []);
+  }, [data]);
 
   if (loadingImage||loadingPost) {
     return <Loading />;

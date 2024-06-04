@@ -4,11 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Img, Input, Line, List, Text } from "components";
 
 
-const textboxEightOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
+
 
 const EventReservationPagePage = () => {
   const navigate = useNavigate();

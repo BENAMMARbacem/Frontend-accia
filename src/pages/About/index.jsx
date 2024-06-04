@@ -1,20 +1,16 @@
 
 import { Button, Img, Text } from "components";
-import PageTitle from "components/PageTitle";
 import Features from "components/Features";
 import ReturnButton from "components/ReturnButton";
 import TextComponent from "components/TextComponent";
 import MapCard from "components/MapCard";
 
-const textboxEightOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
+;
 
 const AboutPage = () => {
   return (
     <>
+    
       <div className="bg-white-A700 flex flex-col items-center justify-start mx-auto  w-full">
         <div className="flex flex-col justify-start w-full">
           <PageTitle title="A Propos ACCIA" />

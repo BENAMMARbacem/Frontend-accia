@@ -5,11 +5,7 @@ import { Img, Line, Text } from "components";
 import SearchBar from "components/SearchBar";
 import ReturnButton from "components/ReturnButton";
 
-const textboxEightOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
+
 
 const ActivitiesPage = () => {
   const navigate = useNavigate();

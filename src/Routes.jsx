@@ -5,8 +5,11 @@ import NotFound from "pages/NotFound";
 import Loading from "components/Loading";
 import Footer from "components/Footer";
 import { ComplexNavbar } from "components/Navbar";
+import banner from "components/banner";
+
 import RegisterPage from "pages/RegisterPage";
 import LoginPage from "pages/LoginPage";
+import Banner from "components/banner";
 const EventTicket = React.lazy(() => import("pages/EventTicket"));
 const ReservationSuccess = React.lazy(() => import("pages/ReservationSuccess"));
 const Activities = React.lazy(() => import("pages/Activities"));
@@ -30,14 +33,21 @@ const Home1 = React.lazy(() => import("pages/Home1"));
 const Postspage = React.lazy(() => import("pages/Postspage"));
 const ProjectRoutes = () => {
   return (
-    <React.Suspense fallback={<><Loading /></>}>
+    <React.Suspense
+      fallback={
+        <>
+          <Loading />
+        </>
+      }
+    >
       <Router>
-      <ComplexNavbar />
+        <Banner />
+        <ComplexNavbar />
 
         <Routes>
-        <Route path="/" element={<Home1 />} />
+          <Route path="/" element={<Home1 />} />
           <Route path="/posts" element={<Postspage />} />
-          <Route path="*" element={<NotFound />} /> 
+          <Route path="*" element={<NotFound />} />
           {/* <Route path="/profilepage" element={<ProfilePage />} /> */}
           <Route path="/library" element={<Library />} />
           <Route path="/about" element={<About />} />
@@ -53,7 +63,10 @@ const ProjectRoutes = () => {
           <Route path="/contact" element={<Conatct />} />
           <Route path="/regles" element={<Regles />} />
           <Route path="/rapportpage" element={<Rapportpage />} />
-          <Route path="/eventreservationpage" element={<EventReservationPage />}/>
+          <Route
+            path="/eventreservationpage"
+            element={<EventReservationPage />}
+          />
           <Route path="/activities" element={<Activities />} />
           <Route path="/reservationsuccess" element={<ReservationSuccess />} />
           <Route path="/eventticket" element={<EventTicket />} />

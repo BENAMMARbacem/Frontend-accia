@@ -1,6 +1,4 @@
-import React from "react";
 
-import { Button, Img, SelectBox, Text } from "components";
 import { Input } from "@material-tailwind/react";
 
 const textboxEightOptionsList = [
@@ -12,7 +10,6 @@ const textboxEightOptionsList = [
 const Footer = (props) => {
   return (
     <>
-      <footer className="bg-blue-50 rounded m-2 mb-1 dark:bg-gray-800 pt-4 ">
         <div className="max-w-screen-lg px-4 mx-auto text-gray-400 xl:max-w-screen-xl sm:px-6 md:px-8 dark:text-gray-300">
           <ul className="flex flex-wrap justify-center pb-4 text-lg font-light">
 
@@ -114,7 +111,6 @@ const Footer = (props) => {
             Created by Online Expert
           </div>
         </div>
-      </footer>
 
     </>
   );

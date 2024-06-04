@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../../utils/index";
 import { Img, Input } from "components";
 import { useLocation } from "react-router-dom";
+
 const OwnerComment = (props) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -28,25 +29,37 @@ const OwnerComment = (props) => {
   const [data, setData] = useState({});
 
   useEffect(() => {
+    let isMounted = true; // Track mounted state
+
     const fetchUser = async () => {
       try {
         const response = await axios.get(`/api/admin/users/profile/${idUser}`);
-        setData(response.data);
+        if (isMounted) {
+          setData(response.data);
+        }
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
     };
     fetchUser();
-  }, []);
+
+    return () => {
+      isMounted = false; // Cleanup function to update mounted state
+    };
+  }, [idUser]);
 
   useEffect(() => {
+    let isMounted = true; // Track mounted state
+
     const fetchUserImage = async () => {
       if (data && data.profilePhoto) {
         if (
           data.profilePhoto.url ===
           "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
         ) {
-          setImage(data.profilePhoto.url);
+          if (isMounted) {
+            setImage(data.profilePhoto.url);
+          }
         } else {
           try {
             const response = await axios.get(
@@ -57,8 +70,10 @@ const OwnerComment = (props) => {
             const file = new File([blob], "image", { type: blob.type });
             const fr = new FileReader();
             fr.onload = () => {
-              const res = fr.result;
-              setImage(res);
+              if (isMounted) {
+                const res = fr.result;
+                setImage(res);
+              }
             };
             fr.readAsDataURL(file);
           } catch (error) {
@@ -68,6 +83,10 @@ const OwnerComment = (props) => {
       }
     };
     fetchUserImage();
+
+    return () => {
+      isMounted = false; // Cleanup function to update mounted state
+    };
   }, [data]);
 
   return (
@@ -96,7 +115,7 @@ const OwnerComment = (props) => {
             <div>
               <button
                 onClick={CreateComment}
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
               >
                 commenter
               </button>

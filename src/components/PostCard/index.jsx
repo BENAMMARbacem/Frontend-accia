@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Img, Text } from "components";
+import { Button, Text } from "components";
 import axios from "../../utils/index";
 import Loading from "components/Loading";
 
@@ -46,10 +46,8 @@ if(isLoading){
 }
   return (
     <>
-
-
       <div className={props.className}>
-      {/* <div className="border-solid border-2 border-indigo-200 shadow-lg"> */}
+        {/* <div className="border-solid border-2 border-indigo-200 shadow-lg"> */}
         <div className="flex flex-col items-center justify-start w-full p-2">
           <div className="flex flex-row items-center justify-between w-full">
             <div className="flex flex-col items-start justify-start">
@@ -76,7 +74,7 @@ if(isLoading){
             className=" md:h-auto mt-3 object-cover rounded-xl w-full h-full items-stretch "
             alt="imageTwentyTwo"
             src={url}
-                        />
+          />
           <div className="flex flex-row items-start justify-between mt-[17px] w-full">
             <Button
               className="common-pointer cursor-pointer font-manrope min-w-[134px] text-center text-xs"

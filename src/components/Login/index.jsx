@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const [isLoading, setIsLoading] = useState(false);
   const emailHandler = (e) => {
     setCredentials({ ...credentials, email: e.target.value });
   };

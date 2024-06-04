@@ -5,7 +5,7 @@ function TextComponent({title}) {
   return (
 <>
             <Text
-              className="flex font-manrope  max-w-[1099px] mt-6 mx-auto md:px-5 w-full text-teal-900 text-xl"
+              className="flex font-manrope  max-w-[1099px] mt-6 mx-14 lg:mx-auto md:px-5 w-full text-teal-900 text-xl"
               size="txtLexendSemiBold14"
             >
               {title}

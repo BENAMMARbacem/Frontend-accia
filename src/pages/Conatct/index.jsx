@@ -7,11 +7,7 @@ import MapCard from "components/MapCard";
 import PageTitle from "components/PageTitle";
 import ReturnButton from "components/ReturnButton";
 
-const textboxEightOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
+
 
 const ConatctPage = () => {
   const inputFieldPropList = [

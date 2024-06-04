@@ -1,0 +1,1 @@
+import{j as e,F as x,T as a}from"./index-f451df9c.js";function n({title:t}){return e(x,{children:e(a,{className:"flex font-manrope  max-w-[1099px] mt-6 mx-auto md:px-5 w-full text-teal-900 text-xl",size:"txtLexendSemiBold14",children:t})})}n.defaultProps={title:"Titre de section"};export{n as T};

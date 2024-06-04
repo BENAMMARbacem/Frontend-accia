@@ -83,7 +83,7 @@ const RapportCard = (props) => {
     <>
       <div className={`relative ${props.className}`}>
         <div
-          className={`flex flex-col items-start justify-start mb-[7px] w-full ${
+          className={`flex flex-col items-center justify-start mb-[7px] w-full ${
             isDownloading ? "opacity-20" : ""
           }`}
         >

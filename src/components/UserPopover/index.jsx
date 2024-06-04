@@ -1,16 +1,13 @@
 
 import {
-    Popover,
-    PopoverHandler,
-    PopoverContent,
-    Avatar,
-    Button,
-    Typography,
-    List,
-    ListItem,
-    ListItemPrefix,
-  } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+  Popover,
+  PopoverHandler,
+  PopoverContent,
+  Avatar, Typography,
+  List,
+  ListItem,
+  ListItemPrefix
+} from "@material-tailwind/react";
    
   export default function UserPopover() {
     return (

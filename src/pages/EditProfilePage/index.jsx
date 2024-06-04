@@ -2,11 +2,8 @@
 import { useNavigate } from "react-router-dom";
 
 import {
-  Button,
-  CheckBox,
-  Img,
-  Input,
-  Line, Text
+  Button, Img,
+  Input, Text
 } from "components";
 import TextComponent from "components/TextComponent";
 import ReturnButton from "components/ReturnButton";

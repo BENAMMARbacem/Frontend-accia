@@ -6,14 +6,8 @@ import {
   CheckBox,
   Img, Line, Text
 } from "components";
-import Footer from "components/Footer";
 import ReturnButton from "components/ReturnButton";
 
-const textboxEightOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
 
 const ProfilePagePage = () => {
   const navigate = useNavigate();
@@ -310,7 +304,6 @@ const ProfilePagePage = () => {
             </div>
           </div>
 <ReturnButton path={"/"}/>
-          <Footer className="bg-gray-300 flex items-center justify-center mt-[50px] md:px-5 w-full" />
         </div>
       </div>
     </>

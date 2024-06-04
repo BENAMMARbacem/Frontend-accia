@@ -2,8 +2,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Input, Line, List, Text } from "components";
-import Footer from "components/Footer";
-import Header from "components/Header";
+
 
 const textboxEightOptionsList = [
   { label: "Option1", value: "option1" },
@@ -17,7 +16,6 @@ const ReservationSuccessPage = () => {
   return (
     <>
       <div className="bg-white-A700 font-lexend h-[1977px] mx-auto relative  w-full">
-        <Footer className="absolute bg-gray-300 bottom-[0] flex inset-x-[0] items-center justify-center mx-auto md:px-5 w-full" />
         <div className="absolute flex flex-col md:gap-10 gap-16 justify-start md:px-5 right-[4%] top-[13%] w-[83%]">
           <Text
             className="md:ml-[0] ml-[13px] sm:text-[38px] md:text-[44px] text-[52px] text-blue_gray-900"
@@ -284,7 +282,6 @@ const ReservationSuccessPage = () => {
           </div>
         </div>
         <div className="absolute flex flex-col font-lexend inset-[0] justify-center m-auto md:px-5 w-full">
-          <Header className="bg-gray-300 flex md:flex-col flex-row md:gap-5 items-center justify-center mx-auto shadow-bs1 w-full" />
           <div className="bg-light_blue-900_99 flex flex-col md:gap-10 gap-[109px] items-start justify-center mb-auto mt-[-57px] mx-auto p-[139px] md:px-10 sm:px-5 w-full z-[1]">
             <Line className="bg-light_blue-900 h-[3px] md:ml-[0] ml-[71px] mt-[186px] w-[8%]" />
             <div className="bg-gray-100 flex flex-col items-center justify-end mb-[805px] md:ml-[0] ml-[72px] p-[38px] sm:px-5 rounded-lg shadow-bs5 w-[94%] md:w-full">

@@ -1,6 +1,5 @@
-import React from "react";
 
-import { Button, Img, Input } from "components";
+import { Button, Input } from "components";
 
 const SearchBar = () => {
   return (

@@ -1,0 +1,1 @@
+import{j as t,T as x}from"./index-f451df9c.js";const a=({title:e})=>t(x,{className:"flex font-manrope  max-w-[1099px] mt-6 mx-auto md:px-5 w-full text-teal-900 text-2xl",size:"txtLexendSemiBold14",children:e});a.defaultProps={title:"Titre de Page"};export{a as P};

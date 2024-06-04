@@ -1,32 +1,18 @@
-import React from "react";
 
 import {
   Button,
   CheckBox,
   Img,
-  Input,
-  Line,
-  List,
-  SelectBox,
-  Text,
+  Input, Text
 } from "components";
-import Footer from "components/Footer";
-import Header from "components/Header";
 import PageTitle from "components/PageTitle";
 
-const textboxEightOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
 
 const MembershipSuccessPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-lexend justify-start mx-auto  w-full">
         <div className="flex flex-col items-center w-full">
-          <Header className="bg-gray-300 flex md:flex-col flex-row md:gap-5 items-center justify-center md:px-5 shadow-bs1 w-full" />
-          <Navbar className="font-manrope h-[107px] md:h-[281px] md:px-5 relative w-full" />
         </div>
         <PageTitle className="flex flex-col md:ml-[0] ml-[206px] mt-24 md:px-5 relative w-[31%] sm:w-full" />
         <div className="flex flex-col font-manrope items-end mt-16 md:px-10 px-12 sm:px-5 w-full">
@@ -336,7 +322,6 @@ const MembershipSuccessPage = () => {
           </Button>
         </div>
         <div className="flex flex-col items-center mt-[50px] w-full">
-          <Footer className="bg-gray-300 flex items-center justify-center md:px-5 w-full" />
         </div>
       </div>
     </>

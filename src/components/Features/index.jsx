@@ -1,6 +1,4 @@
 import { Img, Text } from "components";
-import ReturnButton from "components/ReturnButton";
-import React from "react";
 
 export default function Features() {
   return (

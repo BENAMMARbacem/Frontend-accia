@@ -4,19 +4,12 @@ import { Img, Text } from "components";
 import EventInfosBar from "components/EventInfosBar";
 import PageTitle from "components/PageTitle";
 import ReturnButton from "components/ReturnButton";
-import { useState } from "react";
 
-const textboxEightOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
+
 const SingleEventPagePage = () => {
   const location=useLocation();
   const searchParams=new URLSearchParams(location.search)
-  const id=searchParams.get('id');
-  const navigate = useNavigate();
-  const [url,SetUrl]=useState("");
+
     const propsFromPreviousPage = location.state;
 
   return (

@@ -225,7 +225,7 @@ const Home1Page = () => {
         )}
 
         <List
-          className="grid lg:grid-cols-2 lg:gap-y-1 gap-x-4 lg:gap-x-1 grid-cols-4 mx-auto mt-4"
+          className="grid lg:grid-cols-2 lg:gap-y-1 gap-x-4 lg:gap-x-1 grid-cols-4 mx-14 lg:mx-auto mt-4"
           orientation="horizontal"
         >
           {rapportCardPropList.map((props, index) => (
@@ -258,13 +258,13 @@ const Home1Page = () => {
         )}
 
         <List
-          className="grid lg:grid-cols-2 lg:gap-y-1 gap-x-4 lg:gap-x-1 grid-cols-3 mx-auto mt-4 w-full"
+          className="grid lg:grid-cols-2 lg:gap-y-1 gap-x-4 lg:gap-x-1 grid-cols-4 mx-14 lg:mx-auto  mt-4"
           orientation="horizontal"
         >
           {postCardPropList.map((props, index) => (
             <React.Fragment key={`PostCard${index}`}>
               <PostCard
-                className="bg-white-A700 flex flex-col items-center justify-start p-6 sm:px-5 rounded shadow-bs2 w-full mx-0 lg:ml-0"
+                className=" bg-gray-50_01 flex flex-col items-center justify-start p-6 sm:px-5 rounded shadow-bs2 w-full mx-0 lg:ml-0"
                 {...props}
               />
             </React.Fragment>
