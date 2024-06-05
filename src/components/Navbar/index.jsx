@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Navbar,
   Typography,
@@ -6,40 +6,29 @@ import {
   Menu,
   MenuHandler,
   MenuList,
-  MenuItem,
-  Card,
-  Avatar,
+  MenuItem, Avatar,
   IconButton,
-  Collapse,
+  Collapse
 } from "@material-tailwind/react";
 
 import {
   UserCircleIcon,
-  ChevronDownIcon,
-  CursorArrowRaysIcon,
-  Cog6ToothIcon,
-  PowerIcon,
+  ChevronDownIcon, PowerIcon,
   Bars2Icon,
-  Square3Stack3DIcon,
-  RocketLaunchIcon,
-  HomeIcon,
+  Square3Stack3DIcon, HomeIcon,
   BookOpenIcon,
   DocumentDuplicateIcon,
   TicketIcon,
   ChatBubbleOvalLeftEllipsisIcon,
-  InformationCircleIcon,
+  InformationCircleIcon
 } from "@heroicons/react/24/solid";
 
-import {
-  MobileNav,
-  CodeBracketSquareIcon,
-  CubeTransparentIcon,
-  InboxArrowDownIcon,
-  LifebuoyIcon,
-} from "@material-tailwind/react";
 
 import { Text } from "components";
 import { Link } from "react-router-dom";
+import { Context } from "index";
+import { Bounce, toast } from "react-toastify";
+import axios from "../../utils/index";
 const navListMenuItems = [
   {
     title: "Rapport & document",
@@ -74,7 +63,7 @@ function NavListMenu() {
         <MenuHandler>
           <Typography as="a" href="#" variant="small" className="font-normal">
             <MenuItem className="hidden items-center gap-2 font-medium text-blue-gray-900 flex rounded-full">
-              <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "}
+              <BookOpenIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "}
               Bibliothèque{" "}
               <ChevronDownIcon
                 strokeWidth={2}
@@ -94,87 +83,8 @@ function NavListMenu() {
     </React.Fragment>
   );
 }
-// // profile menu component
-// const profileMenuItems = [
-//   {
-//     label: "My Profile",
-//     icon: UserCircleIcon,
-//   },
-//   {
-//     label: "Edit Profile",
-//     icon: Cog6ToothIcon,
-//     href: "editProfilePage",
-//   },
 
-//   {
-//     label: "Sign Out",
-//     icon: PowerIcon,
-//     href:"/about"
-//   },
-// ];
-
-// function ProfileMenu() {
-//   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-//   const closeMenu = () => setIsMenuOpen(false);
-
-//   return (
-//     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
-//       <MenuHandler>
-//         <Button
-//           variant="text"
-//           color="blue-gray"
-//           className="flex items-center gap-1  py-0.5 pr-2 pl-0.5 "
-//         >
-//           <Avatar
-//             variant="circular"
-//             size="sm"
-//             alt="tania andrew"
-//             className="border border-gray-900 p-0.5"
-//             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-//           />
-//           <ChevronDownIcon
-//             strokeWidth={2.5}
-//             className={`h-3 w-3 transition-transform ${
-//               isMenuOpen ? "rotate-180" : ""
-//             }`}
-//           />
-//         </Button>
-//       </MenuHandler>
-//       <MenuList className="p-1 bg-white-A700">
-//         {profileMenuItems.map(({ label, icon, href }, key) => {
-//           const isLastItem = key === profileMenuItems.length - 1;
-//           return (
-//             <MenuItem
-//               key={label}
-//               onClick={closeMenu}
-//               className={`flex items-center gap-2  ${
-//                 isLastItem
-//                   ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-//                   : ""
-//               }`}
-//             >
-//               {React.createElement(icon, {
-//                 className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
-//                 strokeWidth: 2,
-//               })}
-
-//               <Typography
-//                 as="span"
-//                 variant="small"
-//                 className="font-normal"
-//                 color={isLastItem ? "red" : "inherit"}
-//               >
-//                 {label}
-//               </Typography>
-//             </MenuItem>
-//           );
-//         })}
-//       </MenuList>
-//     </Menu>
-//   );
-// }
-const profileMenuItems = [
+const profileMenuItemsConnected = [
   {
     label: "My Profile",
     icon: UserCircleIcon,
@@ -183,14 +93,85 @@ const profileMenuItems = [
   {
     label: "Sign Out",
     icon: PowerIcon,
-    href: "logout",
+  },
+];
+
+const profileMenuItemsNotConnected = [
+  {
+    label: "Sign in",
+    icon: UserCircleIcon,
+    href: "login",
   },
 ];
 
 function ProfileMenu() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [url, setUrl] = useState(
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+  );
+  const [profileMenuItems, setProfileMenuItems] = useState(
+    profileMenuItemsNotConnected
+  );
+  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    setIsAuthenticated(false);
+  };
+
+  const getFileNameWithoutExtension = (filename) => {
+    return filename.split(".").slice(0, -1).join(".");
+  };
 
   const closeMenu = () => setIsMenuOpen(false);
+
+  useEffect(() => {
+    const fetchProfileImage = async () => {
+      const UrlPath = localStorage.getItem("image");
+
+      if (
+        UrlPath &&
+        UrlPath !==
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+      ) {
+        const imagePath = UrlPath.split("/").pop();
+        const imageNameWithoutExtension =
+          getFileNameWithoutExtension(imagePath);
+        console.log(imageNameWithoutExtension);
+        try {
+          const response = await axios.get(
+            `/api/admin/users/profile-image/${imageNameWithoutExtension}`
+          );
+          const blob = response.data;
+          const file = new File([blob], "image", { type: blob.type });
+          const fr = new FileReader();
+          fr.onload = () => {
+            setUrl(fr.result);
+            setProfileMenuItems(profileMenuItemsConnected); // Update profileMenuItems after URL is set
+          };
+          fr.readAsDataURL(file);
+        } catch (error) {
+          console.error("Error fetching profile image", error);
+          // Handle error (optional)
+        }
+      } else {
+        setUrl(UrlPath);
+        setProfileMenuItems(profileMenuItemsConnected);
+        console.log("url path", UrlPath);
+      }
+    };
+
+    if (isAuthenticated) {
+      fetchProfileImage();
+    } else {
+      setProfileMenuItems(profileMenuItemsNotConnected);
+    }
+  }, [
+    isAuthenticated,
+    profileMenuItemsConnected,
+    profileMenuItemsNotConnected,
+  ]);
 
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -205,7 +186,7 @@ function ProfileMenu() {
             size="sm"
             alt="tania andrew"
             className="border border-gray-900 p-0.5"
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+            src={url}
           />
           <ChevronDownIcon
             strokeWidth={2.5}
@@ -221,7 +202,12 @@ function ProfileMenu() {
           return (
             <MenuItem
               key={label}
-              onClick={closeMenu}
+              onClick={() => {
+                closeMenu();
+                if (label === "Sign Out") {
+                  handleLogout();
+                }
+              }}
               className={`flex items-center gap-2 ${
                 isLastItem
                   ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
@@ -263,16 +249,12 @@ function ProfileMenu() {
 }
 
 
+
 const navListItems = [
   {
     label: "Accueil",
     icon: HomeIcon,
     href: "/",
-  },
-  {
-    label: "Bibliothèque",
-    icon: BookOpenIcon,
-    href: "library",
   },
   {
     label: "Publications",
@@ -333,7 +315,7 @@ export function ComplexNavbar() {
               size="sm"
               alt="tania andrew"
               className=""
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
             />
             <Text size={19}>Accia</Text>
           </div>

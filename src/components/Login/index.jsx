@@ -1,7 +1,9 @@
-import axios from "axios";
-import React, { useState } from "react";
+import { Context } from "index";
+import axios from "../../utils/index";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const {isAuthenticated,setIsAuthenticated}=useContext(Context)
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const emailHandler = (e) => {
@@ -16,26 +18,26 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(credentials);
-      console.log(localStorage.getItem("token"));
-      console.log(localStorage.getItem("id"));
+      
     } catch (error) {
       console.log(error);
     }
     
     async function login() {
       await axios
-        .post("http://192.168.1.105:8000/api/auth/login", credentials)
+        .post("/api/auth/login", credentials)
         .then((response) => {
           localStorage.setItem("token", response.data.token);
-          localStorage.setItem("id", response.data.user._id);
-          console.log(response.data);
+          localStorage.setItem("id", response.data.user._id)
+          localStorage.setItem("image", response.data.user.profilePhoto.url);
+          setIsAuthenticated(true)
           navigate("/");
         });
     }
   };
   return (
    
-      <div className="flex items-center justify-center h-screen w-full px-5 ">
+      <div className="flex items-center justify-center h-screen w-full px-5  ">
       <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-4xl w-full">
         <div className="w-full p-8">
           <p className="text-xl text-gray-600 text-center">

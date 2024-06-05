@@ -1,19 +1,30 @@
-import { Img } from 'components';
-import React from 'react'
+import { Img } from "components";
+import React from "react";
 
 const Banner = (props) => {
-  return <>
-  <section className="bg-white dark:bg-gray-900">
-    <div className="grid grid-cols-2 max-w-screen-xl px-2 py-2  mx-auto gap-8 lg:mt-4 lg:mx-4  ">
-        <div className="mr-auto place-self-center lg:col-span-7">
-            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Payments tool for software companies</h1>
-            <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
-          
+  return (
+    <>
+      <section className="bg-white dark:bg-gray-900 border-solid border-2 border-blue-300 ">
+        <div className="mb-0 font-extrabold text-center">
+          Association des cadres de contrôle d’inspection et d’audit
         </div>
-        <div className=" lg:mt-0 lg:col-span-5 lg:flex">
-            <Img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png" alt="mockup"/>
-        </div>                
-    </div>
-</section></>;
+        <div className="flex flex-col-3 justify-between items-center max-w-screen-xl px-2 py-2	 ">
+          <div className="ml-12 lg:ml-2">
+            <h1 className="max-w-2xl mb-4 font-extrabold tracking-tight leading-none  dark:text-white">
+              POUR UNE GESTION PUBLIQUE PERFORMANTE{" "}
+            </h1>
+          </div>
+          <div className="w-24 h-24 ml-18 lg:mx-4 lg:pt-6 ">
+            <Img src="images/img_image34.png" alt="banner" />
+          </div>
+          <div className=" lg:ml-6">
+            <h1 className="ltr max-w-2xl mb-4 font-extrabold tracking-tight leading-none  dark:text-white">
+              من أجل رقابة فاعلة وتصرف عمومي ناجح
+            </h1>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 };
 export default Banner;

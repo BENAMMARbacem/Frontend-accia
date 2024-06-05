@@ -23,7 +23,8 @@
     "react-router-dom": "6.0.2",
     "react-router-hash-link": "^2.4.3",
     "react-select": "^5.2.1",
-    "react-spinners": "^0.13.8"
+    "react-spinners": "^0.13.8",
+    "react-toastify": "^10.0.2"
   },
   "scripts": {
     "dev": "vite --host",
