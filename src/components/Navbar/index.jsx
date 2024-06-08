@@ -24,11 +24,11 @@ import {
 } from "@heroicons/react/24/solid";
 
 
-import { Text } from "components";
+import { Img, Text } from "components";
 import { Link } from "react-router-dom";
 import { Context } from "index";
-import { Bounce, toast } from "react-toastify";
 import axios from "../../utils/index";
+
 const navListMenuItems = [
   {
     title: "Rapport & document",
@@ -41,16 +41,17 @@ const navListMenuItems = [
     url: "/images",
   },
 ];
+
 function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const renderItems = navListMenuItems.map(({ title, description, url }) => (
-    <a href={url} key={title}>
-      <MenuItem>
-        <Typography variant="h6" color="blue-gray" className="mb-1">
+    <a href={url} key={title} >
+      <MenuItem >
+        <Typography variant="h6" color="white" className="mb-1">
           {title}
         </Typography>
-        <Typography variant="small" color="gray" className="font-normal">
+        <Typography variant="small" color="white" className="font-normal">
           {description}
         </Typography>
       </MenuItem>
@@ -62,20 +63,19 @@ function NavListMenu() {
       <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
         <MenuHandler>
           <Typography as="a" href="#" variant="small" className="font-normal">
-            <MenuItem className="hidden items-center gap-2 font-medium text-blue-gray-900 flex rounded-full">
-              <BookOpenIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "}
+            <MenuItem className="hidden items-center gap-2 font-medium text-gray-900 flex rounded-full ">
+              <BookOpenIcon className="h-[18px] w-[18px]  text-blue-gray-500" />{" "}
               Bibliothèque{" "}
               <ChevronDownIcon
                 strokeWidth={2}
-                className={`h-3 w-3 transition-transform ${
-                  isMenuOpen ? "rotate-180" : ""
-                }`}
+                className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""
+                  }`}
               />
             </MenuItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="bg-gray-50 hidden overflow-visible grid ml-4">
-          <ul className="col-span-4 flex w-full flex-col gap-1">
+        <MenuList className="bg-light_blue-900_01 hidden overflow-visible grid ml-4 " >
+          <ul className="col-span-4 flex w-full flex-col gap-1 " style={{ color: "white" }}>
             {renderItems}
           </ul>
         </MenuList>
@@ -117,7 +117,9 @@ function ProfileMenu() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("id");
+    localStorage.removeItem("image");
     setIsAuthenticated(false);
+    localStorage.setItem("isAuthenticated", JSON.stringify(false));
   };
 
   const getFileNameWithoutExtension = (filename) => {
@@ -133,12 +135,11 @@ function ProfileMenu() {
       if (
         UrlPath &&
         UrlPath !==
-          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
       ) {
         const imagePath = UrlPath.split("/").pop();
         const imageNameWithoutExtension =
           getFileNameWithoutExtension(imagePath);
-        console.log(imageNameWithoutExtension);
         try {
           const response = await axios.get(
             `/api/admin/users/profile-image/${imageNameWithoutExtension}`
@@ -167,11 +168,7 @@ function ProfileMenu() {
     } else {
       setProfileMenuItems(profileMenuItemsNotConnected);
     }
-  }, [
-    isAuthenticated,
-    profileMenuItemsConnected,
-    profileMenuItemsNotConnected,
-  ]);
+  }, [isAuthenticated]);
 
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -190,9 +187,8 @@ function ProfileMenu() {
           />
           <ChevronDownIcon
             strokeWidth={2.5}
-            className={`h-3 w-3 transition-transform ${
-              isMenuOpen ? "rotate-180" : ""
-            }`}
+            className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""
+              }`}
           />
         </Button>
       </MenuHandler>
@@ -208,11 +204,10 @@ function ProfileMenu() {
                   handleLogout();
                 }
               }}
-              className={`flex items-center gap-2 ${
-                isLastItem
-                  ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                  : ""
-              }`}
+              className={`flex items-center gap-2 ${isLastItem
+                ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+                : ""
+                }`}
             >
               {React.createElement(icon, {
                 className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
@@ -247,8 +242,6 @@ function ProfileMenu() {
     </Menu>
   );
 }
-
-
 
 const navListItems = [
   {
@@ -297,27 +290,25 @@ function NavList() {
 }
 
 export function ComplexNavbar() {
-  const [isNavOpen, setIsNavOpen] = React.useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
-  React.useEffect(() => {
+
+  useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setIsNavOpen(false)
     );
   }, []);
+
   return (
     <>
       <Navbar className=" max-w-full p-2 rounded-none  pl-6">
         <div className="relative mx-auto flex items-center justify-between text-blue-gray-900">
-          <div className="flex items-center">
-            <Avatar
-              variant="circular"
-              size="sm"
-              alt="tania andrew"
-              className=""
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
-            />
-            <Text size={19}>Accia</Text>
+          <div className="flex items-center ml-6 lg:m-0">
+            <div className="w-14 h-14 lg:w-10  lg:h-10  ">
+              <Img src="images/img_image34.png" alt="banner" />
+            </div>
+
           </div>
           <div className="lg:hidden ml-20">
             <NavList />

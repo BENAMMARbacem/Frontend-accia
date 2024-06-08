@@ -4,6 +4,7 @@ import Features from "components/Features";
 import ReturnButton from "components/ReturnButton";
 import TextComponent from "components/TextComponent";
 import MapCard from "components/MapCard";
+import PageTitle from "components/PageTitle";
 
 ;
 

@@ -2,8 +2,9 @@ import PageTitle from "components/PageTitle";
 import EventCardSection from "components/EventSectionCard";
 import ReturnButton from "components/ReturnButton";
 import React, { useEffect, useState } from "react";
-import axios from '../../utils/index';
+// import axios from '../../utils/index';
 import Loading from "components/Loading";
+import axios from "axios";
 
 
 const EventsPagePage = () => {

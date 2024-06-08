@@ -9,6 +9,7 @@ import Features from "components/Features";
 import TextComponent from "components/TextComponent";
 import axios from "../../utils/index";
 import Loading from "components/Loading";
+import HomeCarrousel from "components/Carrousel";
 const Home1Page = () => {
   const navigate = useNavigate();
   const [url, setUrl] = useState("");
@@ -117,43 +118,10 @@ const Home1Page = () => {
   return (
     <>
       <div className="flex flex-col justify-end w-full">
-        <div className="font-manrope h-[559px] md:px-5 relative w-full">
-          <div className="">
-            <div className="absolute h-[600px] inset-[0] justify-center mt-0 w-full">
-              <Img
-                className="h-[560px] m-auto object-cover w-full"
-                src="images/img_image169.png"
-                alt="image169"
-              />
-              <div className="absolute flex flex-row md:gap-10 h-max inset-[0] items-center justify-between m-auto w-[93%]">
-                <Button
-                  className="flex h-11 items-center justify-center rounded-sm w-11"
-                  shape="round"
-                  color="light_blue_200"
-                  size="lg"
-                  variant="fill"
-                >
-                  <Img
-                    src="images/img_arrowleft_teal_900.svg"
-                    alt="arrowleft"
-                  />
-                </Button>
-                <Button
-                  className="flex h-11 items-center justify-center rounded-sm w-11"
-                  shape="round"
-                  color="light_blue_200"
-                  size="lg"
-                  variant="fill"
-                >
-                  <Img
-                    src="images/img_arrowleft_teal_900.svg"
-                    alt="arrowright"
-                  />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
+{/* carrosel */}
+<div >
+      <HomeCarrousel/>
+</div>
         <div className="bg-gray-50 flex flex-col items-center justify-end md:ml-[0] ml-[3px] p-[70px] md:px-10 sm:px-5 w-full">
           <div className="flex md:flex-col flex-row gap-[43px] items-start justify-start max-w-[1191px] mt-[0px] w-full">
             <div className="flex md:flex-1 flex-col gap-[41px] items-start justify-start w-[76%] md:w-full">
@@ -237,19 +205,7 @@ const Home1Page = () => {
             </React.Fragment>
           ))}
         </List>
-        {/* <div className="flex md:flex-col flex-row font-manrope gap-[27px]
-                         items-center justify-center ml-16 mt-5 lg:ml-0 lg:mx-0
-                          w-[28%] md:w-full">
-         <Button
-           className="common-pointer cursor-pointer min-w-[138px] rounded-lg text-center text-sm"
-           onClick={() => navigate("/rapportpage")}
-           color="light_blue_900"
-           size="sm"
-           variant="fill"
-         >
-           Voir plus
-         </Button>
-       </div> */}
+      
         {/* TODO: //Gallerie here */}
         {postCardPropList.length > 0 ? (
           <TextComponent title={"Publication récents"} />
@@ -270,27 +226,17 @@ const Home1Page = () => {
             </React.Fragment>
           ))}
         </List>
-        {/* <div className="flex md:flex-col flex-row font-manrope gap-[27px]
-                         items-center justify-center ml-16 mt-5 lg:ml-0 lg:mx-0
-                          w-[28%] md:w-full">
-         <Button
-           className="common-pointer cursor-pointer min-w-[138px] rounded-lg text-center text-sm"
-           onClick={() => navigate("/posts")}
-           color="light_blue_900"
-           size="sm"
-           variant="fill"
-         >
-           Voir plus
-         </Button>
-       </div> */}
+        
 
         {isEventSpecial.hasSpecialEvent ? (
           <>
             <TextComponent title={isEventSpecial?.event?.[0]?.title?.fr} />
 
             <img
-              className="lg:w-full lg:mx-0 p-5 lg:h-full mt-5 lg:mt-0"
-              src={url}
+              className=" lg:mx-0 p-5  mt-5 lg:mt-0 object-cover h-72 w-full "
+              // src={url}
+              src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+
               alt="imageSixtyEight"
             />
             <div className="flex md:flex-col flex-row font-manrope gap-[27px] items-center justify-center ml-16 mt-5 lg:ml-0 lg:mx-0 w-[28%] md:w-full">

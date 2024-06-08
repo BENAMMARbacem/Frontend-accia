@@ -6,7 +6,6 @@ import { Button, Img, Text } from "components";
 import { formatDate, formatTime } from "../../utils/index";
 const EventInfosBar = (props) => {
   const navigate = useNavigate();
-console.log("props event info",props)
   return (
     <>
       <div className="bg-gray-50 flex md:flex-col flex-row font-manrope md:gap-5 items-center  justify-start max-w-[1096px] mt-[19px] mx-auto p-3 md:px-5 rounded-lg w-full  ">
