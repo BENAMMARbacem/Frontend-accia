@@ -99,7 +99,7 @@ const RapportCard = (props) => {
             <Img
               className="h-[212px] md:h-auto mt-[15px] object-cover rounded-[3px] w-full"
               alt="imageThirtyFour"
-              src="../../../public/images/img_image34_212x235.jpeg"
+              src="images/img_image34_212x235.jpeg"
             />
           </div>
           <div className="grid grid-cols-2 items-center justify-start w-full mt-2">

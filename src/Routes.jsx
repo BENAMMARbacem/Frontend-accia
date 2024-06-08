@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "pages/Home";
 import NotFound from "pages/NotFound";
 import Loading from "components/Loading";
 import Footer from "components/Footer";
@@ -10,6 +9,7 @@ import banner from "components/banner";
 import RegisterPage from "pages/RegisterPage";
 import LoginPage from "pages/LoginPage";
 import Banner from "components/banner";
+import GalleryPage from "pages/Gallery";
 const EventTicket = React.lazy(() => import("pages/EventTicket"));
 const ReservationSuccess = React.lazy(() => import("pages/ReservationSuccess"));
 const Activities = React.lazy(() => import("pages/Activities"));
@@ -70,7 +70,8 @@ const ProjectRoutes = () => {
           <Route path="/activities" element={<Activities />} />
           <Route path="/reservationsuccess" element={<ReservationSuccess />} />
           <Route path="/eventticket" element={<EventTicket />} />
-          <Route path="/links" element={<Home />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+
         </Routes>
         <Footer />
       </Router>

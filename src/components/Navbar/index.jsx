@@ -38,7 +38,7 @@ const navListMenuItems = [
   {
     title: "Image",
     description: "contient tous les documents et rapports",
-    url: "/images",
+    url: "/gallery",
   },
 ];
 
