@@ -14,7 +14,7 @@ export const handleSectionNavigation = (id) => {
 
 import axios from "axios";
 export default axios.create({
-  baseURL: "http://192.168.43.235:8000",
+  baseURL: "http://192.168.1.199:8000",
 });
 
 export const formatDate = (isoString) => {

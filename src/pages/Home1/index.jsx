@@ -51,14 +51,14 @@ const Home1Page = () => {
 
     getEventAndPost();
   }, []);
-  console.log(isEventSpecial);
+
   useEffect(() => {
     const fetchImage = async () => {
       const token = localStorage.getItem("token") || "";
       const config = {
         headers: { authorization: `Bearer ${token}` },
       };
-      console.log("fetch start");
+    
       if (
         isEventSpecial &&
         isEventSpecial.event &&
@@ -232,12 +232,18 @@ const Home1Page = () => {
           <>
             <TextComponent title={isEventSpecial?.event?.[0]?.title?.fr} />
 
-            <img
+            {/* <img
               className=" lg:mx-0 p-5  mt-5 lg:mt-0 object-cover h-72 w-full "
               // src={url}
               src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
 
               alt="imageSixtyEight"
+            /> */}
+            <img
+            
+              src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+              alt="image_event"
+              className="object-scale-down h-full w-full p-2 "
             />
             <div className="flex md:flex-col flex-row font-manrope gap-[27px] items-center justify-center ml-16 mt-5 lg:ml-0 lg:mx-0 w-[28%] md:w-full">
               <Button

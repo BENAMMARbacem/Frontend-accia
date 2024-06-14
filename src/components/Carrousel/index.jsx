@@ -12,13 +12,13 @@ const HomeCarousel = () => {
   return (
     <div className=''>
     
-    <Carousel className="rounded-xl h-72 w-full" autoplay={true} autoplayDelay={3000}>      {/* Utilisez map pour afficher toutes les images */}
+      <Carousel className="h-full w-full 	" autoplay={true} autoplayDelay={3000}>      {/* Utilisez map pour afficher toutes les images */}
       {items.map((imageUrl, index) => (
         <img
           key={index}
           src={imageUrl}
           alt={`image ${index + 1}`}
-          className="object-fill h-full w-full" 
+          className="object-scale-down h-full w-full  " 
         />
       ))}
     </Carousel>
