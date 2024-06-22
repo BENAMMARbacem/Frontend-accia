@@ -39,22 +39,6 @@ const SingleEventPagePage = () => {
               </Text>
             </div>
 
-            {/* <div className="grid ">
-              <Text
-                className="md:ml-[0] ml-44 mt-[33px] sm:text-[25px] md:text-[27px] text-[29px] text-blue_gray-900"
-                size="txtLexendBold29"
-              >
-                Thematique
-              </Text>
-
-              <Text
-                className="leading-[22.00px] ml-44 md:ml-[0]  mt-2 text-gray-900 text-sm w-[76%] sm:w-full"
-                size="txtManropeRegular14"
-              >
-                test
-              </Text>
-            </div> */}
-
             <div className="flex flex-col gap-2">
               <div className="sm:grid sm:grid-cols-2 flex flex-row gap-2 items-center justify-start md:ml-[0] ml-[213px] mt-7 md:px-5 w-[41%] md:w-full">
                 <Img

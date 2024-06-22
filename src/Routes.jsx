@@ -10,6 +10,8 @@ import RegisterPage from "pages/RegisterPage";
 import LoginPage from "pages/LoginPage";
 import Banner from "components/banner";
 import GalleryPage from "pages/Gallery";
+import GalleryCard from "components/GalleryCard";
+import SingleGalleryPage from "pages/SingleGalleryPage";
 const EventTicket = React.lazy(() => import("pages/EventTicket"));
 const ReservationSuccess = React.lazy(() => import("pages/ReservationSuccess"));
 const Activities = React.lazy(() => import("pages/Activities"));
@@ -71,6 +73,7 @@ const ProjectRoutes = () => {
           <Route path="/reservationsuccess" element={<ReservationSuccess />} />
           <Route path="/eventticket" element={<EventTicket />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/SingleGalleryPage" element={<SingleGalleryPage />} />
 
         </Routes>
         <Footer />
